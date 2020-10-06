@@ -1,0 +1,52 @@
+body {
+    font-size: 15px;
+}
+
+.container {
+    width: 1000px;
+    background-color: lightblue;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-left: 0.5em;
+    color: mediumblue;
+}
+
+h2 {
+    color: mediumblue;
+}
+
+Nav {
+    display: inline;
+}
+
+.container2 {
+    background-color: white;
+    width: 600px;
+    margin: 0 auto;
+    color: mediumblue;
+}
+
+.container2 li {
+    margin-left: 1em;
+}
+
+.container3 {
+    display: grid;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    color: mediumblue;
+}
+
+.container3 Button {
+    margin-left: 1em;
+    width: 6.5em;
+    height: 6.5em;
+}
+
+.symbol {
+    font-size: 50px;
+    color: mediumblue;
+}
