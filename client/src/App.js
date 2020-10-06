@@ -7,6 +7,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Search from './Components/Search';
+import About from './Components/About';
+import Alerts from './Components/Alerts';
+import Forum from './Components/Forum';
 import Support from './Components/Support';
 import InsertEntry from './Components/InsertEntry';
 import HomeView from './Components/HomeView';
@@ -40,7 +43,7 @@ class App extends React.Component {
         </Navbar>
         <Switch>
         
-          <Route path='/'>
+          <Route path='/' exact>
             <HomeView />
           </Route>
           <Route path='/search'>
@@ -51,6 +54,15 @@ class App extends React.Component {
           </Route>
           <Route path='/support'>
             <Support />
+          </Route>
+          <Route path='/forum'>
+            <Forum />
+          </Route>
+          <Route path='/about'>
+            <About />
+          </Route>
+          <Route path='/alerts'>
+            <Alerts />
           </Route>
         </Switch>
 

@@ -6,11 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Switch, Route, NavLink} from "react-router-dom";
 
-import Search from './Search';
-import Forum from './Forum';
-import Support from './Support';
-import InsertEntry from './InsertEntry';
-import { withRouter, Router } from "react-router";
 
 class HomeView extends React.Component {
     render() {
@@ -38,19 +33,19 @@ class HomeView extends React.Component {
                             </Col>
                             <Col>
                                 <Nav.Item as="li">                    
-                                    <Button className="rounded-circle" variant="light"><Nav.Link to="/forum" activeClassName="selected"><span className="symbol">&#128490;</span></Nav.Link></Button>
+                                    <Button className="rounded-circle" variant="light"><NavLink to="/forum" activeClassName="selected"><span className="symbol">&#128490;</span></NavLink></Button>
                                     <h5>Forum</h5>
                                 </Nav.Item>
                             </Col>
                             <Col>
                                 <Nav.Item as="li">
-                                    <Button className="rounded-circle" variant="light"><Nav.Link to="/about" activeClassName="selected"><span className="symbol">&#9432;</span></Nav.Link></Button>
+                                    <Button className="rounded-circle" variant="light"><NavLink to="/about" activeClassName="selected"><span className="symbol">&#9432;</span></NavLink></Button>
                                     <h5>About</h5>
                                 </Nav.Item>
                             </Col>
                             <Col>
                                 <Nav.Item as="li">
-                                    <Button className="rounded-circle" variant="light"><Nav.Link to="/alerts" activeClassName="selected"><span className="symbol">&#33;</span></Nav.Link></Button>
+                                    <Button className="rounded-circle" variant="light"><NavLink to="/alerts" activeClassName="selected"><span className="symbol">&#33;</span></NavLink></Button>
                                     <h5>Alerts</h5>
                                 </Nav.Item>
                             </Col>

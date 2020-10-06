@@ -13,6 +13,10 @@ h1 {
     color: mediumblue;
 }
 
+h2 {
+    color: mediumblue;
+}
+
 Nav {
     display: inline;
 }
@@ -22,6 +26,10 @@ Nav {
     width: 600px;
     margin: 0 auto;
     color: mediumblue;
+}
+
+.container2 li {
+    margin-left: 1em;
 }
 
 .container3 {
