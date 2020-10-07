@@ -5,7 +5,17 @@ class About extends React.Component {
         return (
             <div>
                 <h2>About Heads-Up</h2>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p>The purpose of this app is to act as a simple service and support tool for both of victims of sexual assault and for members of communities where attacks are known to have taken place.</p>
+                <h3>Features</h3>
+                <ul>
+                    <li>Interactive city map with markers showing attacks by location</li>
+                    <li>Users can contribute details of attack via submit form, which will take the date, time, location and description of attacker to store in database</li>
+                    <li>Users should be able to filter/search map to define location and date/time range</li>
+                    <li>Live data incorporated from police/news data sources (tbc)</li>
+                    <li>Support page with resources and contact information</li>
+                    <li>Alert tool allows users to register for text/email alerts of new attacks added close to user's location (tbc)</li>
+                    <li>Member's support forum (tbc)</li>
+                </ul>
 
             </div>
         )
