@@ -18,7 +18,8 @@ The purpose of this app is to act as a simple service and support tool for both 
 * JavaScript
 * Css
 * Express
-* Leaflet
+* Leaflet (map) // npm add react-leaflet leaflet react-dom
+* Open Cage (geocoding) // npm add opencage-api-client
 * Police or news API (tbc)
 * Package manager: NPM
 
