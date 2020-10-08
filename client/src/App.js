@@ -20,14 +20,14 @@ import { withRouter, Router } from "react-router";
 class App extends React.Component {
   render(){
     return (
-      <Container className="container">
+      <Container fluid className="container">
         <h1>Heads-Up</h1>
         <Navbar>
           <Nav>
             <Nav.Item as="li">
               <NavLink to="/" exact activeClassName="selected">Home</NavLink>
             </Nav.Item>
-            <Nav.Item as="li">
+            {/*<Nav.Item as="li">
               <Nav.Link to="/strap" activeClassName="selected">strap</Nav.Link>
             </Nav.Item>
             <Nav.Item as="li">
@@ -38,9 +38,10 @@ class App extends React.Component {
             </Nav.Item>
             <Nav.Item as="li">
               <Nav.Link to="/appservice" activeClassName="selected">app/service</Nav.Link>
-            </Nav.Item>
+    </Nav.Item>*/}
           </Nav>
         </Navbar>
+
         <Switch>
         
           <Route path='/' exact>
