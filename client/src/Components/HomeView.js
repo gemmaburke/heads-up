@@ -20,11 +20,11 @@ class HomeView extends React.Component {
                             <NavLink to="/addentry" activeClassName="selected">Add entry</NavLink>
                         </Nav.Item>
                     </Nav>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9710.53180195673!2d13.404551268134107!3d52.5219813798145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e1edb11286f%3A0x30fc01c366e4166e!2sAlexanderplatz!5e0!3m2!1spt-PT!2sde!4v1601816144027!5m2!1spt-PT!2sde" width="600" height="450" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9710.53180195673!2d13.404551268134107!3d52.5219813798145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e1edb11286f%3A0x30fc01c366e4166e!2sAlexanderplatz!5e0!3m2!1spt-PT!2sde!4v1601816144027!5m2!1spt-PT!2sde" width="600" height="450" frameBorder="0" allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe>
                 </div>
                 <div className="container3">
                     <Nav>
-                        <Row md={4}>
+                        <Row>
                             <Col>
                                 <Nav.Item as="li">
                                     <Button className="rounded-circle" variant="light"><NavLink to="/support" activeClassName="selected"><span className="symbol">&hearts;</span></NavLink></Button>
