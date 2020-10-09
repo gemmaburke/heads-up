@@ -20,7 +20,7 @@ class HomeView extends React.Component {
                             <NavLink to="/addentry" activeClassName="selected">Add entry</NavLink>
                         </Nav.Item>
                     </Nav>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9710.53180195673!2d13.404551268134107!3d52.5219813798145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e1edb11286f%3A0x30fc01c366e4166e!2sAlexanderplatz!5e0!3m2!1spt-PT!2sde!4v1601816144027!5m2!1spt-PT!2sde" width="600" height="450" frameBorder="0" allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79466.3739490183!2d-0.23576814249408082!3d51.50726817963512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876054929181a85%3A0xd1af6c4f49b4bd0c!2sHyde%20Park!5e0!3m2!1spt-PT!2sde!4v1602255902260!5m2!1spt-PT!2sde" width="600" height="450" frameBorder="0" allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe>
                 </div>
                 <div className="container3">
                     <Nav>
@@ -33,7 +33,7 @@ class HomeView extends React.Component {
                             </Col>
                             <Col>
                                 <Nav.Item as="li">                    
-                                    <Button className="rounded-circle" variant="light"><NavLink to="/forum" activeClassName="selected"><span className="symbol">&#128490;</span></NavLink></Button>
+                                    <Button className="rounded-circle" variant="light"><a href="https://headup.freeforums.net/" target="_blank" rel="noopener noreferrer"><span className="symbol">&#128490;</span></a></Button>
                                     <h5>Forum</h5>
                                 </Nav.Item>
                             </Col>

@@ -34,25 +34,27 @@ class Search extends React.Component {
         //console.log(this.state.location)
     };
 
-    handleSubmit = (event, location) => {
+    handleSubmit = (event) => {
         event.preventDefault();
+        const value = event.target;
         this.setState({
-            location: location
+            location: value
         })
-        for (let a = 0; a < this.state.attacks.length; a++) {
+        /*for (let a = 0; a < this.state.attacks.length; a++) {
             for (let b = 0; b < this.state.attacks.length[a]; b++) {
                 console.log(this.state.attacks[b])
             }
-        }
+        }*/
         console.log(this.state.location)
     }
 
-    handleSubmit2 = (event, date) => {
+    handleSubmit2 = (event) => {
         event.preventDefault();
+        const value = event.target;
         this.setState({
-            date: date
+            date: value
         })
-        console.log(this.state)
+        console.log(this.state.date)
     }
 
     render() {
@@ -60,33 +62,33 @@ class Search extends React.Component {
             <Container>
                 <Row>
                     <Col>
-                <h3>Search by Location</h3>
-                <Form onSubmit={(e, l) => this.handleSubmit(e, l)}>
-                    <Form.Label htmlFor="location">Insert Location:</Form.Label>
-                    <Form.Control
-                        name="location"
-                        type="text" 
-                        value={this.state.location}
-                        onChange={(e) => this.handleChange(e)}
-                    /> 
-                    <Button type="submit">Search</Button>
-                </Form>
-                </Col>
-                <Col>
-                <h3>Search by Date</h3>
-                <Form onSubmit={(e, d) => this.handleSubmit2(e, d)}>
-                    <Form.Label htmlFor="date">Insert Date:</Form.Label>
-                    <Form.Control
-                        name="date"
-                        type="date" 
-                        value={this.state.date}
-                        onChange={(e) => this.handleChange2(e)}
-                    /> 
-                    <Button type="submit">Search</Button>
-                    <Button>See all attacks in the last Week</Button>
-        </Form>
+                        <h3>Search by Location</h3>
+                        <Form onSubmit={(e) => this.handleSubmit(e)}>
+                            <Form.Label htmlFor="location">Insert Location:</Form.Label>
+                            <Form.Control
+                                name="location"
+                                type="text" 
+                                value={this.state.location}
+                                onChange={(e) => this.handleChange(e)}
+                            /> 
+                            <Button type="submit">Search</Button>
+                        </Form>
+                    </Col>
+                    <Col>
+                        <h3>Search by Date</h3>
+                        <Form onSubmit={(e) => this.handleSubmit2(e)}>
+                            <Form.Label htmlFor="date">Insert Date:</Form.Label>
+                            <Form.Control
+                                name="date"
+                                type="Date" 
+                                value={this.state.date}
+                                onChange={(e) => this.handleChange2(e)}
+                            /> 
+                            <Button type="submit">Search</Button>
+                            <Button>See all attacks in the last Week</Button>
+                        </Form>
             
-                </Col>
+                    </Col>
                 </Row>
             </Container>
         )
