@@ -16,6 +16,7 @@ class About extends React.Component {
                     <li>Alert tool allows users to register for text/email alerts of new attacks added close to user's location (tbc)</li>
                     <li>Member's support forum (tbc)</li>
                 </ul>
+                <p><em>This is a student project that was created at <a href="http://codeop.tech">CodeOp</a>, a full stack development bootcamp in Barcelona.</em></p>
 
             </div>
         )
