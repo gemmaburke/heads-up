@@ -25,7 +25,7 @@ class About extends React.Component {
                     <li>Member's support forum</li>
                 </ul>
                 <p><em>This is a student project that was created at <a href="http://codeop.tech">CodeOp</a>, a full stack development bootcamp in Barcelona.</em></p>
-
+                <br/>
             </div>
         )
     }

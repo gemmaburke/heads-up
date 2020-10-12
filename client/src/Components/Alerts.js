@@ -52,7 +52,7 @@ class Alerts extends React.Component {
                         <Button type="submit">Submit</Button>
                     </Form.Group>
                 </Form>
-
+                <br/>
             </div>
         )
     }
