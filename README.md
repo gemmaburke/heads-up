@@ -1,8 +1,12 @@
-# FSPT3-Team1
-Project title to be added once agreed.
+# Heads-Up
 
 ## Project summary
-The purpose of this app is to act as a simple service and support tool for both of victims of sexual assault and for members of communities where attacks are known to have taken place.
+The purpose of this app is to act as a simple service and support tool for both victims of sexual assault and for members of communities where attacks are known to have taken place anywhere in the world.
+The objective is that everybody can use it and it can help as a way so that victims can help other community members as a way to prevent more sexual attacks and to make it easier to catch sexual offenders. We decided to make the project worldwide because there is nothing like this yet and because this could help especially migrants and refugees who are usually some of the most vulnerable members of society.
+We chose the title "Heads-Up" because it makes sense in two ways:
+* Firstly because a "heads-up" is a warning, or a message that alerts or prepares
+* Secondly because sexual assault victims tend to feel shame and this is a way to empower them so that they can hold their heads up high.
+
 
 ## Features
 * Interactive city map with markers showing attacks by location
