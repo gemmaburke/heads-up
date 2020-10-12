@@ -11,7 +11,7 @@ class About extends React.Component {
                 <p>We chose the title "Heads-Up" because it makes sense in two ways:</p>
                 <ul>
                     <li>Firstly because a "heads-up" is a warning, or a message that alerts or prepares</li>
-                    <li>Secondly because sexual assault victims tend to feel shame and this is a way to empower them so that they can hold their heads up high.</li>
+                    <li>Also because sexual assault victims tend to feel shame and this is a way to empower them so that they can hold their heads up high.</li>
                 </ul>
 
                 <h3>Features</h3>
