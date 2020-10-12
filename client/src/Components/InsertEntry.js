@@ -20,17 +20,14 @@ class InsertEntry extends React.Component {
         this.setState({
             [name]: value
         });
-        console.log(this.state)
+        // console.log(this.state)
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        //console.log("Hello")
-        const {target: {name, value}} = event;
-        this.setState({
-            [name]: value
-        });
-        console.log(this.state)
+        console.log('Submitted:', this.state);
+        this.props.addAttack(this.state);
+        this.setState({date: '', time: '', location: '', description: ''});
     }
 
     render() {
@@ -39,14 +36,14 @@ class InsertEntry extends React.Component {
                 <h2>Add New Entry</h2>
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                     <Form.Group>
-                        <Form.Label htmlFor="date">Aproximate Date:</Form.Label>
+                        <Form.Label htmlFor="date">Approximate Date:</Form.Label>
                             <Form.Control
                                 name="date"
                                 type="date" 
                                 value={this.state.date}
                                 onChange={(e) => this.handleChange(e)}
                             />
-                        <Form.Label htmlFor="time">Aproximate Time:</Form.Label>
+                        <Form.Label htmlFor="time">Approximate Time:</Form.Label>
                             <Form.Control 
                                 name="time"
                                 type="time" 
@@ -67,9 +64,11 @@ class InsertEntry extends React.Component {
                                 rows="2"
                                 value={this.state.description}
                                 onChange={(e) => this.handleChange(e)} />
+                            <br/>
                         <Button type="submit">Submit</Button>
                     </Form.Group>
                 </Form>
+                <br/>
             </Container>
         )
     }

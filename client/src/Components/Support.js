@@ -15,7 +15,7 @@ class Support extends React.Component {
                     <li><a href="https://www.rcne.com/links/sources-of-help-for-survivors/">Sources of Help for Survivors</a></li>
 
                 </ul>
-
+            <br/>
             </Container>
         )
     }
