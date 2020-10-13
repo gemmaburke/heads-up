@@ -2,7 +2,7 @@
 Project title to be added once agreed.
 
 ## Project summary
-The purpose of this app is to act as a simple service and support tool for both of victims of sexual assault and for members of communities where attacks are known to have taken place.
+The purpose of this app is to act as a simple service and support tool for the victims of sexual assault and members of the communities where attacks are known to have taken place.
 
 ## Features
 * Interactive city map with markers showing attacks by location
