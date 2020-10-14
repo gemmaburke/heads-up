@@ -1,18 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const db = require("../model/helper");
 
-
-function getAttacks(req, res) {
-  db(`SELECT * FROM assaults ORDER BY id ASC;`)
-  .then((results) => {
-    res.send(results.data);
-  })
-  .catch((err) => res.status(500).send(err));
-}
-
-// Routes
-
+/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
