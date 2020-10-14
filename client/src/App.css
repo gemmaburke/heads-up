@@ -48,6 +48,7 @@ h3 {
 }
 
 .symbol {
+    font-weight: bold;
     font-size: 50px;
     color: mediumblue;
 }
