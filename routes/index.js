@@ -31,7 +31,7 @@ router.get('/assaults/:date', (req, res) => {
 
   let date = req.params.date;
 
-  db(`SELECT place, description FROM assaults WHERE date=${date};`)
+  db(`SELECT time, place, description FROM assaults WHERE date=${date};`)
   .then((results) => {
     res.send(results.data);
   })

@@ -36,5 +36,5 @@ VALUES
 
 SELECT * FROM assaults;
 
-SELECT * FROM assaults WHERE date = ${date};
+SELECT * FROM assaults WHERE date = ${date};`
 
