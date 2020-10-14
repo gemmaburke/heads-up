@@ -13,6 +13,7 @@ const db = require("../model/helper");
 
 // Routes
 
+/* GET home page. */
 router.get('/', function(req, res, next) {
   res.json( { title: 'Heads Up' });
 });
