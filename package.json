@@ -17,9 +17,6 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "opencage-api-client": "^0.9.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-leaflet": "^2.7.0",
-    "react-leaflet-france-geolocation": "^1.0.0"
+    "react-dom": "^16.13.1"
   }
 }
