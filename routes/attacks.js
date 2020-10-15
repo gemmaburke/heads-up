@@ -62,4 +62,8 @@ router.get('/date', function(req, res) {
 
 
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> 8004043af5aad16629b70e2bc45768899a3911c5
