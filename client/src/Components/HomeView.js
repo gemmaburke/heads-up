@@ -35,7 +35,7 @@ class HomeView extends React.Component {
                         <Row>
                             <Col>
                                 <Nav.Item as="li">
-                                    <Button className="rounded-circle" variant="light"><NavLink to="/support" activeClassName="selected"><span className="symbol">&hearts;</span></NavLink></Button>
+                                    <Button className="rounded-circle" variant="light"><NavLink to="/support" activeClassName="selected"><span className="symbol1">&hearts;</span></NavLink></Button>
                                     <h5>Support</h5>
                                 </Nav.Item>
                             </Col>
@@ -47,7 +47,7 @@ class HomeView extends React.Component {
                             </Col>
                             <Col>
                                 <Nav.Item as="li">
-                                    <Button className="rounded-circle" variant="light"><NavLink to="/about" activeClassName="selected"><span className="symbol">&#9432;</span></NavLink></Button>
+                                    <Button className="rounded-circle" variant="light"><NavLink to="/about" activeClassName="selected"><span className="symbol1">&#9432;</span></NavLink></Button>
                                     <h5>About</h5>
                                 </Nav.Item>
                             </Col>
