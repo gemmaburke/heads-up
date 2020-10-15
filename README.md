@@ -28,7 +28,9 @@ We chose the title "Heads-Up" because it makes sense in two ways:
 * Package manager: NPM
 
 ## Backend
-* (Database scheme to be added)
+Database scheme
+![Database](images/database.jpg)
+
 - Database of 'attacks' includes:
   - date
   - time
