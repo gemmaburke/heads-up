@@ -48,6 +48,6 @@ Site map
 ![Site map](images/site-map.jpg)
 
 User flow
-![User flow](images/user-flow.jpg)
+![User flow](images/userflow.jpg)
 
 _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
