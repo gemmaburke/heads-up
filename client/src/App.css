@@ -21,6 +21,10 @@ h3 {
     color: mediumblue;
 }
 
+h5 {
+    margin-left: 10px;
+}
+
 .container2 {
     background-color: white;
     width: 600px;
@@ -50,5 +54,11 @@ h3 {
 .symbol {
     font-weight: bold;
     font-size: 50px;
+    color: mediumblue;
+}
+
+.symbol1 {
+    font-weight: bold;
+    font-size: 60px;
     color: mediumblue;
 }

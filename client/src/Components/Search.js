@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { withRouter, Router } from "react-router";
 
 // const TEST = [
 //     {date: 1-10-2020, time: "10:00", location: "Central Station", description: "Tall guy, dressed in black, looked 50 yeard old"},
@@ -39,6 +40,7 @@ class Search extends React.Component {
         console.log('searching for:', this.state.location);
         this.props.searchLocation(this.state.location);
         this.setState({location: '', date: ''});
+        this.props.history.push('/');
     }
 
     // handleSubmit2 = (event) => {
@@ -91,4 +93,4 @@ class Search extends React.Component {
     }
 }
 
-export default Search;
+export default withRouter(Search);
