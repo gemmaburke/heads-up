@@ -90,13 +90,6 @@ class App extends React.Component {
 
   render(){
     return (
-<<<<<<< HEAD
-      <div className="App">
-        <header className="App-header">
-        </header>
-        <h1>Heads Up Backend</h1>
-      </div>
-=======
       <Container fluid className="container">
         <h1>Heads-Up</h1>
         <Navbar>
@@ -144,7 +137,6 @@ class App extends React.Component {
       </Container>
 
       
->>>>>>> 8004043af5aad16629b70e2bc45768899a3911c5
     );
   }
 }
