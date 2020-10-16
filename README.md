@@ -1,16 +1,12 @@
 # Heads-Up
 
 ## Project summary
-<<<<<<< HEAD
-The purpose of this app is to act as a simple service and support tool for the victims of sexual assault and members of the communities where attacks are known to have taken place.
-=======
-The purpose of this app is to act as a simple service and support tool for the victims of sexual assault and members of communities where attacks are known to have taken place anywhere in the world.
+The purpose of this app is to act as a simple service and support tool for the victims of sexual assault and members of communities where attacks are known to have taken place.
 The objective is that everybody can use it and it can help as a way so that victims can help other community members as a way to prevent more sexual attacks and to make it easier to catch sexual offenders. We decided to make the project worldwide because there is nothing like this yet and because this could help especially migrants and refugees who are usually some of the most vulnerable members of society.
 We chose the title "Heads-Up" because it makes sense in two ways:
 * Firstly because a "heads-up" is a warning, or a message that alerts or prepares
 * Also because sexual assault victims tend to feel shame and this is a way to empower them so that they can hold their heads up high.
 
->>>>>>> 8004043af5aad16629b70e2bc45768899a3911c5
 
 ## Features
 * Interactive city map with markers showing attacks by location
