@@ -30,6 +30,7 @@ class InsertEntry extends React.Component {
         this.setState({date: '', time: '', location: '', description: ''});
     }
 
+
     render() {
         return (
             <Container>

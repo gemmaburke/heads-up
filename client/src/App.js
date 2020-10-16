@@ -13,7 +13,7 @@ import Support from './Components/Support';
 import InsertEntry from './Components/InsertEntry';
 import HomeView from './Components/HomeView';
 import { Switch, Route, NavLink} from "react-router-dom";
-import { withRouter, Router } from "react-router";
+import { withRouter } from "react-router";
 
 // OpenCage API geocoding:
 const opencage = require('opencage-api-client');
@@ -51,7 +51,7 @@ class App extends React.Component {
       });
   }
 
-  addAttack(newAttack) {
+  /*addAttack(newAttack) {
     opencage
     .geocode({ q: newAttack.location, key: OC_API_KEY})
     .then(data => {
@@ -66,9 +66,39 @@ class App extends React.Component {
     .catch(error => {
       console.log('Error:', error.message);
     });
+  }*/
+
+  addAttack(newAttack) {
+    fetch(ASSAULTS_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAttack),
+    })
+    .then(res => res.json())
+    .then(json => {
+      this.setState({assaults:json});
+      console.log(this.state.assaults);
+    })
+    .catch((err) => console.log(err));
+    /*opencage
+    .geocode({ q: newAttack.location, key: OC_API_KEY})
+    .then(data => {
+      if (data.results.length > 0) {
+          console.log("Found location: " + data.results[0].formatted);
+          const latlng = data.results[0].geometry;
+          newAttack.geocode = latlng;
+          this.setState({markers: [...this.state.markers, newAttack]});
+          this.props.history.push('/');
+      } else alert("Location not found");
+    })
+    .catch(error => {
+      console.log('Error:', error.message);
+    });*/
   }
 
-  setLocation(locationStr) {
+  /*setLocation(locationStr) {
     opencage
       .geocode({ q: locationStr, key: OC_API_KEY})
       .then(data => {
@@ -82,6 +112,23 @@ class App extends React.Component {
       .catch(error => {
         console.log('Error:', error.message);
       });
+  }*/
+
+  search(q) {
+    console.log(q);
+    /*opencage
+      .geocode({ q: locationStr, key: OC_API_KEY})
+      .then(data => {
+        if (data.results.length > 0) {
+            console.log("Found location: " + data.results[0].formatted);
+            const lat = data.results[0].geometry.lat;
+            const lng = data.results[0].geometry.lng;
+            this.setState({mapDefault: {latitude: lat, longitude: lng, zoomLevel: 10}});
+        } else alert("Location not found");
+      })
+      .catch(error => {
+        console.log('Error:', error.message);
+      });*/
   }
 
   resetMap() {
@@ -118,7 +165,7 @@ class App extends React.Component {
             <HomeView markers={this.state.markers} mapDisplay={this.state.mapDefault} resetMap={e => this.resetMap()}/>
           </Route>
           <Route path='/search'>
-            <Search searchLocation={(loc) => this.setLocation(loc)}/>
+            <Search assaults={this.state.assaults} search={(q) => this.search(q)}/>
           </Route>
           <Route path='/addentry'>
             <InsertEntry addAttack={(newAttack) => this.addAttack(newAttack)}/>

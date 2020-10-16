@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { withRouter, Router } from "react-router";
+import { withRouter } from "react-router";
 
 // const TEST = [
 //     {date: 1-10-2020, time: "10:00", location: "Central Station", description: "Tall guy, dressed in black, looked 50 yeard old"},
@@ -16,61 +16,54 @@ class Search extends React.Component {
         super(props);
         this.state={
             // attacks: TEST,
-            location: '',
-            date: ''
+            text: ''
         };
     }
 
     handleChange = (event) => {
         this.setState({
-            location: event.target.value
+            text: event.target.value
         });
-        //console.log(this.state.location)
+        //console.log(this.state.date)
     };
 
-    // handleChange2 = (event) => {
-    //     this.setState({
-    //         date: event.target.value
-    //     });
-    //     //console.log(this.state.location)
-    // };
-
-    handleSubmit = (event) => {
+    /*handleSubmit = (event) => {
         event.preventDefault();
         console.log('searching for:', this.state.location);
         this.props.searchLocation(this.state.location);
         this.setState({location: '', date: ''});
         this.props.history.push('/');
+    }*/
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('searching for:', this.state.text);
+        this.props.search(this.state.text);
+        this.setState({text: ''});
+        this.props.history.push('/');
     }
 
-    // handleSubmit2 = (event) => {
-    //     event.preventDefault();
-    //     const value = event.target;
-    //     this.setState({
-    //         date: value
-    //     })
-    //     console.log(this.state.date)
-    // }
+
 
     render() {
         return(
-            <Container>
+            <Container fluid className="container">
                 <Row>
                     <Col>
-                        <h3>Search by Location</h3>
+                        <h3>Search</h3>
                         <Form onSubmit={(e) => this.handleSubmit(e)}>
-                            <Form.Label htmlFor="location">Insert Location:</Form.Label>
+                            <Form.Label htmlFor="location">Insert Date or Location:</Form.Label>
                             <Form.Control
-                                name="location"
+                                name="q"
                                 type="text" 
-                                value={this.state.location}
+                                value={this.state.text}
                                 onChange={(e) => this.handleChange(e)}
                             /> 
                             <br/>
                             <Button type="submit">Search</Button>
                         </Form>
                     </Col>
-                    <Col>
+                    {/*<Col>
                         <h3>Search by Date</h3>
                         <Form onSubmit={(e) => this.handleSubmit2(e)}>
                             <Form.Label htmlFor="date">Insert Date:</Form.Label>
@@ -78,14 +71,14 @@ class Search extends React.Component {
                                 name="date"
                                 type="Date" 
                                 value={this.state.date}
-                                onChange={(e) => this.handleChange2(e)}
+                                onChange={(e) => this.handleChange(e)}
                             /> 
                             <br/>
                             <Button type="submit">Search</Button>&nbsp; &nbsp;
                             <Button>See all attacks in the last Week</Button>
                         </Form>
             
-                    </Col>
+                    </Col>*/}
                 </Row>
                 <br/>
             </Container>
