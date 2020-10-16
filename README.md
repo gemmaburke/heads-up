@@ -29,7 +29,7 @@ We chose the title "Heads-Up" because it makes sense in two ways:
 
 ## Backend
 Database scheme
-![Database](images/database.jpg)
+![Database](images/database.JPG)
 
 - Database of 'attacks' includes:
   - date
@@ -50,6 +50,6 @@ Site map
 ![Site map](images/site-map.jpg)
 
 User flow
-![User flow](images/userflow.jpg)
+![User flow](images/userflow.JPG)
 
 _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
