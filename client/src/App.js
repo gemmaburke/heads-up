@@ -20,7 +20,7 @@ const opencage = require('opencage-api-client');
 // register for your own API key at OpenCageData.com and update in .env file:
 const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
 
-//const ASSAULTS_URL = "http://localhost:5000/assaults"
+const ASSAULTS_URL = "http://localhost:5000/assaults"
 
 const MAP_INIT = {
   latitude: 54.932,
@@ -38,18 +38,18 @@ class App extends React.Component {
     }
   }
 
-  //componentDidMount() {
-    //fetch(ASSAULTS_URL)
-      //.then(res => res.json())
-      //.then(json => {
-        //// upon sucess, update assaults
-        //this.setState({ assaults: json });
-      //})
-      //.catch(error => {
+  componentDidMount() {
+    fetch(ASSAULTS_URL)
+      .then(res => res.json())
+      .then(json => {
+        // upon sucess, update assaults
+        this.setState({ assaults: json });
+      })
+      .catch(error => {
         // upon failure, show error message
-        //console.log("ERROR in componentDidMount():", error);
-      //});
-  //}
+        console.log("ERROR in componentDidMount():", error);
+      });
+  }
 
   addAttack(newAttack) {
     opencage
