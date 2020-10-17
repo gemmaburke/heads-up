@@ -2,7 +2,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+const opencage = require('opencage-api-client');
 
+const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
 
 class InsertEntry extends React.Component {
     constructor(props) {
@@ -11,7 +13,9 @@ class InsertEntry extends React.Component {
             date: '',
             time: '',
             location: '',
-            description: ''
+            description: '',
+            lat: 0,
+            lng: 0
         }
     }
 
@@ -20,16 +24,33 @@ class InsertEntry extends React.Component {
         this.setState({
             [name]: value
         });
-        // console.log(this.state)
-    };
+    }
 
     handleSubmit = (event) => {
         event.preventDefault();
+        // below doesn't work because it completes handleSubmit before completing getGeocode (with updated state)
+        this.getGeocode();
         console.log('Submitted:', this.state);
         this.props.addAttack(this.state);
-        this.setState({date: '', time: '', location: '', description: ''});
+        this.setState({date: '', time: '', location: '', description: '', lat: 0, lng: 0});
     }
 
+    getGeocode() {
+        opencage
+        .geocode({ q: this.state.location, key: OC_API_KEY})
+        .then(data => {
+        if (data.results.length > 0) {
+            console.log("Found location: " + data.results[0].formatted);
+            const lat = data.results[0].geometry.latitude;
+            const lng = data.results[0].geometry.longitude;
+            this.setState({lat: lat, lng: lng});
+            // this.props.history.push('/');
+        } else alert("Location not found");
+        })
+        .catch(error => {
+        console.log('Error:', error.message);
+        });
+    }
 
     render() {
         return (

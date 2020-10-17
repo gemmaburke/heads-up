@@ -6,11 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { withRouter } from "react-router";
 
-// const TEST = [
-//     {date: 1-10-2020, time: "10:00", location: "Central Station", description: "Tall guy, dressed in black, looked 50 yeard old"},
-//     {date: 7-10-2020, time: "23:00", location: "Hyde Park", description: "they looked blonde and had a lot of strength"}
-// ];
-
 class Search extends React.Component {
     constructor(props){
         super(props);
@@ -42,8 +37,6 @@ class Search extends React.Component {
         this.setState({text: ''});
         this.props.history.push('/');
     }
-
-
 
     render() {
         return(
