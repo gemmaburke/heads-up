@@ -91,6 +91,23 @@ class App extends React.Component {
     }
   }
 
+  async getPoliceData(lat, lng) {
+    // let url = `${POLICE_API_URL}lat=55.868157&lng=-4.2485`;
+    let url = `${POLICE_API_URL}lat=${lat}&lng=${lng}`;
+    try {
+      let response = await fetch(url);
+      if (response.ok) {
+        let data = await response.json();
+        this.setState({policeData: data});
+        console.log(this.state.policeData);
+      } else {
+        console.log(`ERROR: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`EXCEPTION: ${err.message}`);
+    }
+  }
+
   addAttack(newAttack) {
     console.log(newAttack);
     fetch(ASSAULTS_URL, {
@@ -116,6 +133,7 @@ class App extends React.Component {
             console.log("Found location: " + data.results[0].formatted);
             const lat = data.results[0].geometry.lat;
             const lng = data.results[0].geometry.lng;
+            this.getPoliceData(lat, lng);
             this.setState({mapDefault: {latitude: lat, longitude: lng, zoomLevel: 10}});
         } else alert("Location not found");
       })
@@ -149,7 +167,6 @@ class App extends React.Component {
     return (
       <Container fluid className="container">
         <h1>Heads-Up</h1>
-
         <Navbar>
           <Nav>
             <Nav.Item as="li">
