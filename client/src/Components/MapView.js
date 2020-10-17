@@ -18,24 +18,28 @@ class MapView extends React.Component {
       <div className="MapView">
           <Map ref={this.mapRef} center={[this.props.mapDisplay.latitude, this.props.mapDisplay.longitude]} zoom={this.props.mapDisplay.zoomLevel}>
             <TileLayer attribution={this.state.attribution} url={this.state.url}/>
-            {this.props.markers.map((marker, ix) => 
-              <Marker key={`marker-${ix}`} position={marker.geocode}>
-                <Popup>
-                  <span>{marker.date}, {marker.time}</span><br/>
-                  <span>{marker.location}</span>
-                  <p>{marker.description}</p>
-                </Popup>
-              </Marker>
-            )}
-            {this.props.policeData.map((marker, ix) => 
-              <Marker key={`marker-${ix}`} position={[marker.location.latitude, marker.location.longitude]}>
-                <Popup>
-                  <span>{marker.month}</span><br/>
-                  <span>{marker.location.street.name}</span><br/>
-                  <span>{marker.outcome_status.category}</span>
-                </Popup>
-              </Marker>
-            )}
+            {
+              this.props.assaults.map((assault) => 
+                <Marker key={assault.id} position={[assault.lat, assault.lng]}>
+                  <Popup>
+                    <span>{assault.date}, {assault.time}</span><br/>
+                    <span>{assault.location}</span>
+                    <p>{assault.description}</p>
+                  </Popup>
+                </Marker>
+              )
+            }
+            {
+              this.props.policeData.map((assault, ix) => 
+                <Marker key={ix} position={[assault.location.latitude, assault.location.longitude]}>
+                  <Popup>
+                    <span>{assault.month}</span><br/>
+                    <span>{assault.location.street.name}</span><br/>
+                    <span>{assault.outcome_status.category}</span>
+                  </Popup>
+                </Marker>
+              )
+            }
           </Map>
           <br/>
       </div>
