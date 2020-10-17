@@ -1,13 +1,9 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-<<<<<<< HEAD
-import Container from 'react-bootstrap/Container';
-
-=======
 import Modal from 'react-bootstrap/Modal';
+import Container from 'react-bootstrap/Container';
 import { withRouter } from "react-router";
->>>>>>> f63784c... Added Modals
 
 class Alerts extends React.Component {
     constructor(props) {

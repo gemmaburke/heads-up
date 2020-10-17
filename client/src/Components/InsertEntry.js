@@ -2,12 +2,10 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-<<<<<<< HEAD
-const opencage = require('opencage-api-client');
-=======
 import Modal from 'react-bootstrap/Modal';
 import { withRouter } from "react-router";
->>>>>>> f63784c... Added Modals
+
+const opencage = require('opencage-api-client');
 
 const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
 
