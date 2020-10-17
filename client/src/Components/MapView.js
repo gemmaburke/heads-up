@@ -13,6 +13,7 @@ class MapView extends React.Component {
   }
 
   render(){
+
     return (
       <div className="MapView">
           <Map ref={this.mapRef} center={[this.props.mapDisplay.latitude, this.props.mapDisplay.longitude]} zoom={this.props.mapDisplay.zoomLevel}>
@@ -23,6 +24,15 @@ class MapView extends React.Component {
                   <span>{marker.date}, {marker.time}</span><br/>
                   <span>{marker.location}</span>
                   <p>{marker.description}</p>
+                </Popup>
+              </Marker>
+            )}
+            {this.props.policeData.map((marker, ix) => 
+              <Marker key={`marker-${ix}`} position={[marker.location.latitude, marker.location.longitude]}>
+                <Popup>
+                  <span>{marker.month}</span><br/>
+                  <span>{marker.location.street.name}</span><br/>
+                  <span>{marker.outcome_status.category}</span>
                 </Popup>
               </Marker>
             )}
