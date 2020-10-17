@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import { withRouter } from "react-router";
@@ -59,7 +60,7 @@ class Alerts extends React.Component {
                                 value={this.state.email}
                                 onChange={(e) => this.handleChange(e)}
                             />
-                            <Form.Label htmlFor="phone_number">Insert Your Phone Number</Form.Label>
+                            <Form.Label htmlFor="phone">Insert Your Phone Number</Form.Label>
                             <Form.Control
                                 required
                                 name="phone"
@@ -80,7 +81,6 @@ class Alerts extends React.Component {
                     </Form.Group>
                 </Form>
                 <br/>
-
                 <Modal show={this.state.show} onHide={(e) => this.handleClose(e)}>
                     <Modal.Header closeButton>
                         <Modal.Title>Success!</Modal.Title>
