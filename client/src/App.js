@@ -54,9 +54,6 @@ class App extends React.Component {
       });
   }
 
-<<<<<<< HEAD
-  /*addAttack(newAttack) {
-=======
   async getPoliceData(lat, lng) {
     // let url = `${POLICE_API_URL}lat=55.868157&lng=-4.2485`;
     let url = `${POLICE_API_URL}lat=${lat}&lng=${lng}`;
@@ -75,7 +72,6 @@ class App extends React.Component {
   }
 
   addAttack(newAttack) {
->>>>>>> 2b36c90... police API added
     opencage
     .geocode({ q: newAttack.location, key: OC_API_KEY})
     .then(data => {

@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
 
 /* GET all attacks by location */
 router.get('/location', function(req, res) { 
-    let attacksByLocation = `SELECT location FROM assaults`;
+    let attacksByLocation = `SELECT place FROM assaults`;
     //select everything from the assaults table
     con.query(attacksByLocation, (error, results) => {
      if (error) {
