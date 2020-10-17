@@ -1,16 +1,22 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+<<<<<<< HEAD
 import Container from 'react-bootstrap/Container';
 
+=======
+import Modal from 'react-bootstrap/Modal';
+import { withRouter } from "react-router";
+>>>>>>> f63784c... Added Modals
 
 class Alerts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            phone_number: '',
-            location: ''
+            location: '',
+            phone: '',
+            show: false
         }
     }
 
@@ -28,12 +34,20 @@ class Alerts extends React.Component {
         this.setState({
             [name]: value
         });
-        console.log(this.state);
-        alert("Your email, phone number and address have been successfully added to our database")
-        
-    };
-
+    }
     
+    handleClose = (e) => {
+        this.setState({
+            show: false
+        });
+        this.props.history.push('/');
+    }
+
+    handleShow = () => {
+        this.setState({
+           show: true
+        })
+    }    
 
     render() {
         return (
@@ -49,16 +63,16 @@ class Alerts extends React.Component {
                                 value={this.state.email}
                                 onChange={(e) => this.handleChange(e)}
                             />
-                        <Form.Label htmlFor="phone_number">Insert Your Phone Number</Form.Label>
+                            <Form.Label htmlFor="phone_number">Insert Your Phone Number</Form.Label>
                             <Form.Control
                                 required
-                                name="phone_number"
-                                type="phone_number" 
-                                value={this.state.phone_number}
+                                name="phone"
+                                type="text" 
+                                value={this.state.phone}
                                 onChange={(e) => this.handleChange(e)}
-                            />    
+                            />
                         <Form.Label htmlFor="address">Insert Address</Form.Label>
-                            <Form.Control
+                            <Form.Control 
                                 required
                                 name="location"
                                 type="text"
@@ -70,9 +84,21 @@ class Alerts extends React.Component {
                     </Form.Group>
                 </Form>
                 <br/>
+
+                <Modal show={this.state.show} onHide={(e) => this.handleClose(e)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Success!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Your e-mail, phone number and address have been successfully added to our database. You will start getting our alerts soon.</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={(e) => this.handleClose(e)}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </Container>
         )
     }
 }
 
-export default Alerts;
+export default withRouter(Alerts);
