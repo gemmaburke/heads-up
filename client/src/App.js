@@ -75,7 +75,7 @@ class App extends React.Component {
     }
   }
 
-  async getPoliceData(lat, lng) {
+  /*async getPoliceData(lat, lng) {
     let url = `${POLICE_API_URL}lat=${lat}&lng=${lng}`;
     try {
       let response = await fetch(url);
@@ -89,7 +89,7 @@ class App extends React.Component {
     } catch (err) {
       console.log(`EXCEPTION: ${err.message}`);
     }
-  }
+  }*/
 
   async getPoliceData(lat, lng) {
     // let url = `${POLICE_API_URL}lat=55.868157&lng=-4.2485`;
