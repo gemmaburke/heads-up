@@ -1,13 +1,21 @@
 module.exports = `
--- Drop table if it exists
+-- Drop table(s) if applicable
 DROP TABLE IF EXISTS assaults;
+DROP TABLE IF EXISTS users;
 
--- (Re)create table
+-- (Re)create table(s)
 CREATE TABLE assaults (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     date_time DATETIME NOT NULL,
     location VARCHAR(500) NOT NULL,
     description VARCHAR(500) DEFAULT '',
+    lat DECIMAL(11,8) NOT NULL,
+    lng DECIMAL(11,8) NOT NULL
+);
+
+CREATE TABLE users (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL,
     lat DECIMAL(11,8) NOT NULL,
     lng DECIMAL(11,8) NOT NULL
 );
@@ -28,4 +36,12 @@ VALUES
     ('2020-10-11 2:00', "Lewisham", "Blonde, was wearing a black jacket", 51.466426, -0.016372), -- ID = 9
     ('2020-10-12 22:05', "Sydenham Hill", "Blonde, tall, looked like 30 years old", 51.433557, -0.068610) -- ID = 10
 ;
+
+INSERT INTO users
+    (email, lat, lng)
+VALUES
+    ('user1@acme.com', 2.345, 2.100),
+    ('user2@acme.com', 4.345, 10.100),
+    ('user3@acme.com', 2.345, 2.170),
+    ('user4@acme.com', 50.345, 2.100);
 `;
