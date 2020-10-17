@@ -20,12 +20,14 @@ const opencage = require('opencage-api-client');
 // register for your own API key at OpenCageData.com and update in .env file:
 const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
 
-const ASSAULTS_URL = "http://localhost:5000/assaults"
+const POLICE_API_URL = 'https://data.police.uk/api/crimes-street/violent-crime?';
+
+//const ASSAULTS_URL = "http://localhost:5000/assaults"
 
 const MAP_INIT = {
-  latitude: 54.932,
-  longitude: -2.962,
-  zoomLevel: 5
+  latitude: 51.510,
+  longitude: -0.129,
+  zoomLevel: 10
 };
 
 class App extends React.Component {
@@ -34,6 +36,7 @@ class App extends React.Component {
     this.state = {
       assaults: [],
       markers: [],
+      policeData: [],
       mapDefault: MAP_INIT
     }
   }
@@ -51,7 +54,28 @@ class App extends React.Component {
       });
   }
 
+<<<<<<< HEAD
   /*addAttack(newAttack) {
+=======
+  async getPoliceData(lat, lng) {
+    // let url = `${POLICE_API_URL}lat=55.868157&lng=-4.2485`;
+    let url = `${POLICE_API_URL}lat=${lat}&lng=${lng}`;
+    try {
+      let response = await fetch(url);
+      if (response.ok) {
+        let data = await response.json();
+        this.setState({policeData: data});
+        console.log(this.state.policeData);
+      } else {
+        console.log(`ERROR: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`EXCEPTION: ${err.message}`);
+    }
+  }
+
+  addAttack(newAttack) {
+>>>>>>> 2b36c90... police API added
     opencage
     .geocode({ q: newAttack.location, key: OC_API_KEY})
     .then(data => {
@@ -60,6 +84,7 @@ class App extends React.Component {
           const latlng = data.results[0].geometry;
           newAttack.geocode = latlng;
           this.setState({markers: [...this.state.markers, newAttack]});
+          console.log(this.state.markers);
           this.props.history.push('/');
       } else alert("Location not found");
     })
@@ -106,6 +131,7 @@ class App extends React.Component {
             console.log("Found location: " + data.results[0].formatted);
             const lat = data.results[0].geometry.lat;
             const lng = data.results[0].geometry.lng;
+            this.getPoliceData(lat, lng);
             this.setState({mapDefault: {latitude: lat, longitude: lng, zoomLevel: 10}});
         } else alert("Location not found");
       })
@@ -139,6 +165,7 @@ class App extends React.Component {
     return (
       <Container fluid className="container">
         <h1>Heads-Up</h1>
+        {/* <button onClick={e => this.getPoliceData()}>Get police data</button> */}
         <Navbar>
           <Nav>
             <Nav.Item as="li">
@@ -162,7 +189,7 @@ class App extends React.Component {
         <Switch>
         
           <Route path='/' exact>
-            <HomeView markers={this.state.markers} mapDisplay={this.state.mapDefault} resetMap={e => this.resetMap()}/>
+            <HomeView markers={this.state.markers} policeData={this.state.policeData} mapDisplay={this.state.mapDefault} resetMap={e => this.resetMap()}/>
           </Route>
           <Route path='/search'>
             <Search assaults={this.state.assaults} search={(q) => this.search(q)}/>
