@@ -27,8 +27,7 @@ class HomeView extends React.Component {
                             Reset View
                         </Nav.Item>
                     </Nav>
-                    {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79466.3739490183!2d-0.23576814249408082!3d51.50726817963512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876054929181a85%3A0xd1af6c4f49b4bd0c!2sHyde%20Park!5e0!3m2!1spt-PT!2sde!4v1602255902260!5m2!1spt-PT!2sde" width="600" height="450" frameBorder="0" allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe> */}
-                    <MapView markers={this.props.markers} mapDisplay={this.props.mapDisplay}/>
+                    <MapView assaults={this.props.assaults} policeData={this.props.policeData} mapDisplay={this.props.mapDisplay}/>
                 </Container>
                 <Container fluid className="container3">
                     <Nav>

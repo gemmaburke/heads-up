@@ -2,20 +2,14 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+//import Row from 'react-bootstrap/Row';
+//import Col from 'react-bootstrap/Col';
 import { withRouter } from "react-router";
-
-// const TEST = [
-//     {date: 1-10-2020, time: "10:00", location: "Central Station", description: "Tall guy, dressed in black, looked 50 yeard old"},
-//     {date: 7-10-2020, time: "23:00", location: "Hyde Park", description: "they looked blonde and had a lot of strength"}
-// ];
 
 class Search extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            // attacks: TEST,
             text: ''
         };
     }
@@ -43,13 +37,11 @@ class Search extends React.Component {
         this.props.history.push('/');
     }
 
-
-
     render() {
         return(
             <Container fluid className="container">
-                <Row>
-                    <Col>
+                {/*<Row>
+                    <Col>*/}
                         <h3>Search</h3>
                         <Form onSubmit={(e) => this.handleSubmit(e)}>
                             <Form.Label htmlFor="location">Insert Date or Location:</Form.Label>
@@ -62,7 +54,7 @@ class Search extends React.Component {
                             <br/>
                             <Button type="submit">Search</Button>
                         </Form>
-                    </Col>
+                    {/*</Col>
                     {/*<Col>
                         <h3>Search by Date</h3>
                         <Form onSubmit={(e) => this.handleSubmit2(e)}>
@@ -78,8 +70,8 @@ class Search extends React.Component {
                             <Button>See all attacks in the last Week</Button>
                         </Form>
             
-                    </Col>*/}
-                </Row>
+                    </Col>
+                </Row>*/}
                 <br/>
             </Container>
         )

@@ -27,7 +27,7 @@ function splitDateTime(assault) {
 
 router.get('/', async (req, res) => {
     try {
-        let results = await db(`SELECT * FROM assaults;`);
+        let results = await db(`SELECT * FROM assaults ORDER BY date_time`);
         let assaults = results.data;
         for (let i=0; i<assaults.length; i++) {
             assaults[i] = splitDateTime(assaults[i]);
@@ -60,6 +60,36 @@ router.post('/', async (req, res) => {
         let assault = results.data[0];
         assault = splitDateTime(assault);
         res.status(201).send(assault);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+
+router.get('/search', async (req, res) => {
+    // Build the SELECT statement
+    let { date, location } = req.query;
+    let where = [];
+    if (date) {
+        where.push( `date_time LIKE '${date}%'` );
+    }
+    if (location) {
+        where.push( `location LIKE '%${location}%'` );
+    }
+    let sql = 'SELECT * FROM assaults';
+    if (where.length) {
+        sql += ' WHERE ' + where.join(' AND ');
+    }
+    sql += ' ORDER BY date_time';
+
+    // Now do it!
+    try {
+        let results = await db(sql);
+        let assaults = results.data;
+        for (let i=0; i<assaults.length; i++) {
+            assaults[i] = splitDateTime(assaults[i]);
+        }
+        res.send(assaults);
     } catch (err) {
         res.status(500).send(err);
     }
