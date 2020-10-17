@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
-import Container from 'react-bootstrap/Container';
 import { withRouter } from "react-router";
 
 class Alerts extends React.Component {
