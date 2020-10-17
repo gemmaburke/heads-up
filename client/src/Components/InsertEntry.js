@@ -37,9 +37,6 @@ class InsertEntry extends React.Component {
         this.getGeocode();
         console.log('Submitted:', this.state);
         this.props.addAttack(this.state);
-<<<<<<< HEAD
-        this.setState({date: '', time: '', location: '', description: '', lat: 0, lng: 0});
-=======
         this.setState({date: '', time: '', location: '', description: ''});
         this.handleShow()
     }
@@ -55,7 +52,6 @@ class InsertEntry extends React.Component {
             show: false
         });
         this.props.history.push('/');
->>>>>>> f63784c... Added Modals
     }
 
     getGeocode() {
