@@ -12,9 +12,19 @@ h1, h2, h3 {
     color: mediumblue;
 }
 
+/* h1 {
+    margin: 0 50px;
+    padding-top: 20px;
+} */
+
 h5 {
     margin-left: 10px;
 }
+
+/* .home {
+    margin: 0 50px;
+    padding: 0;
+} */
 
 a:link {
     color:mediumblue;
@@ -52,7 +62,7 @@ a:hover {
 }
 
 .container3 Button {
-    margin-top: 1em;
+    /* margin-top: 1em; */
     margin-left: 1em;
     width: 6.5em;
     height: 6.5em;

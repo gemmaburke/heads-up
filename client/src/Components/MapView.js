@@ -1,6 +1,9 @@
 import React from 'react';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Popup } from 'react-leaflet';
+import Marker from 'react-leaflet-enhanced-marker';
 import './MapView.css';
+import pinRed from './pin.png';
+import pinBlue from './pin-blue.png';
 
 class MapView extends React.Component {
   constructor(props) {
@@ -22,7 +25,11 @@ class MapView extends React.Component {
               this.props.assaults.length > 0
               ?
                 this.props.assaults.map((assault) => 
-                  <Marker key={assault.id} position={[assault.lat, assault.lng]} fillColor="red">
+                  <Marker
+                    icon={<img src={pinRed} style={{width:'20px'}} alt="marker icon"/>}
+                    key={assault.id}
+                    position={[assault.lat, assault.lng]}
+                  >
                     <Popup>
                       <span>{assault.date}, {assault.time}</span><br/>
                       <span>{assault.location}</span>
@@ -44,7 +51,13 @@ class MapView extends React.Component {
               )
             }
           </Map>
-          <br/>
+          <div align="center">
+            <p>
+              <span><img src={pinRed} style={{width: '20px'}} alt="marker icon"/> &nbsp;Registered attacks &nbsp; &nbsp;</span>
+              <span><img src={pinBlue} style={{width: '20px'}} alt="marker icon"/> &nbsp;Police data</span>
+            </p>
+            <br/>
+          </div>
       </div>
     );
   }
