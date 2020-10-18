@@ -91,24 +91,8 @@ class App extends React.Component {
     }
   }
 
-  async getPoliceData(lat, lng) {
-    // let url = `${POLICE_API_URL}lat=55.868157&lng=-4.2485`;
-    let url = `${POLICE_API_URL}lat=${lat}&lng=${lng}`;
-    try {
-      let response = await fetch(url);
-      if (response.ok) {
-        let data = await response.json();
-        this.setState({policeData: data});
-        console.log(this.state.policeData);
-      } else {
-        console.log(`ERROR: ${response.status} ${response.statusText}`);
-      }
-    } catch (err) {
-      console.log(`EXCEPTION: ${err.message}`);
-    }
-  }
-
   addAttack(newAttack) {
+    // it's getting the state object, but not lat/lng
     console.log(newAttack);
     fetch(ASSAULTS_URL, {
       method: "POST",

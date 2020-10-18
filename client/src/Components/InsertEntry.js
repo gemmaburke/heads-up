@@ -14,8 +14,6 @@ class InsertEntry extends React.Component {
             time: '',
             location: '',
             description: '',
-            lat: 0,
-            lng: 0
         }
     }
 
@@ -26,14 +24,23 @@ class InsertEntry extends React.Component {
         });
     }
 
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     // below doesn't work because it completes handleSubmit before completing getGeocode (with updated state)
+    //     this.getGeocode();
+    //     console.log('Submitted:', this.state);
+    //     this.props.addAttack(this.state);
+    //     this.setState({date: '', time: '', location: '', description: '', lat: 0, lng: 0});
+    // }
+
     handleSubmit = (event) => {
         event.preventDefault();
-        // below doesn't work because it completes handleSubmit before completing getGeocode (with updated state)
-        this.getGeocode();
-        console.log('Submitted:', this.state);
-        this.props.addAttack(this.state);
-        this.setState({date: '', time: '', location: '', description: '', lat: 0, lng: 0});
-    }
+        let latlng = this.getGeocode();
+        // above method is not completing before the rest of the code is run
+        console.log('Submitted:', this.state, latlng);
+        this.props.addAttack({ ...this.state, ...latlng });
+        this.setState({date: '', time: '', location: '', description: ''});
+      }
 
     getGeocode() {
         opencage
@@ -41,10 +48,11 @@ class InsertEntry extends React.Component {
         .then(data => {
         if (data.results.length > 0) {
             console.log("Found location: " + data.results[0].formatted);
-            const lat = data.results[0].geometry.latitude;
-            const lng = data.results[0].geometry.longitude;
-            this.setState({lat: lat, lng: lng});
-            // this.props.history.push('/');
+            const latlng = data.results[0].geometry;
+            // const lat = data.results[0].geometry.latitude;
+            // const lng = data.results[0].geometry.longitude;
+            // console.log(latlng);
+            return latlng;
         } else alert("Location not found");
         })
         .catch(error => {
