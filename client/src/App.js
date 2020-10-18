@@ -192,7 +192,7 @@ class App extends React.Component {
         <Navbar>
           <Nav>
             <Nav.Item>
-              <Link to="/" exact id="home">Home</Link>
+              <Link to="/" exact id="home"><span className="home">Home</span></Link>
             </Nav.Item>
           </Nav>
         </Navbar>

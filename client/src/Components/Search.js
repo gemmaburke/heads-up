@@ -32,8 +32,10 @@ class Search extends React.Component {
 
     render() {
         return(
-            <Container fluid className="container">
+            <Container fluid className="container" style={{paddingLeft: "50px"}}>
+                <br/>
                 <h3>Search</h3>
+                <br/>
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                     <Form.Label htmlFor="date">Select Date:</Form.Label>
                     <Form.Control
@@ -42,6 +44,7 @@ class Search extends React.Component {
                         value={this.state.date}
                         onChange={(e) => this.handleChange(e)}
                     />
+                    <br/>
                     <Form.Label htmlFor="location">Insert Location:</Form.Label>
                     <Form.Control
                         name="location"
@@ -52,6 +55,7 @@ class Search extends React.Component {
                     <br/>
                     <Button type="submit">Search</Button>
                 </Form>
+                <br/>
                 <br/>
             </Container>
         )
