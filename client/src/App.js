@@ -12,7 +12,7 @@ import Alerts from './Components/Alerts';
 import Support from './Components/Support';
 import InsertEntry from './Components/InsertEntry';
 import HomeView from './Components/HomeView';
-import { Switch, Route, NavLink} from "react-router-dom";
+import { Switch, Route, Link} from "react-router-dom";
 import { withRouter } from "react-router";
 // const opencage = require('opencage-api-client');
 
@@ -75,7 +75,7 @@ class App extends React.Component {
     }
   }
 
-  async getPoliceData(lat, lng) {
+  /*async getPoliceData(lat, lng) {
     let url = `${POLICE_API_URL}lat=${lat}&lng=${lng}`;
     try {
       let response = await fetch(url);
@@ -89,7 +89,7 @@ class App extends React.Component {
     } catch (err) {
       console.log(`EXCEPTION: ${err.message}`);
     }
-  }
+  }*/
 
   async getPoliceData(lat, lng) {
     // let url = `${POLICE_API_URL}lat=55.868157&lng=-4.2485`;
@@ -169,8 +169,8 @@ class App extends React.Component {
         <h1>Heads-Up</h1>
         <Navbar>
           <Nav>
-            <Nav.Item as="li">
-              <NavLink to="/" exact activeClassName="selected">Home</NavLink>
+            <Nav.Item>
+              <Link to="/" exact id="home">Home</Link>
             </Nav.Item>
           </Nav>
         </Navbar>

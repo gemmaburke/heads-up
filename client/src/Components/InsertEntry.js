@@ -2,6 +2,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { withRouter } from "react-router";
+
 const opencage = require('opencage-api-client');
 
 const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
@@ -32,7 +35,21 @@ class InsertEntry extends React.Component {
         this.getGeocode();
         console.log('Submitted:', this.state);
         this.props.addAttack(this.state);
-        this.setState({date: '', time: '', location: '', description: '', lat: 0, lng: 0});
+        this.setState({date: '', time: '', location: '', description: ''});
+        this.handleShow()
+    }
+
+    handleShow = () => {
+        this.setState({
+           show: true
+        })
+    }
+    
+    handleClose = (e) => {
+        this.setState({
+            show: false
+        });
+        this.props.history.push('/');
     }
 
     getGeocode() {
@@ -60,6 +77,7 @@ class InsertEntry extends React.Component {
                     <Form.Group>
                         <Form.Label htmlFor="date">Approximate Date:</Form.Label>
                             <Form.Control
+                                required
                                 name="date"
                                 type="date" 
                                 value={this.state.date}
@@ -67,6 +85,7 @@ class InsertEntry extends React.Component {
                             />
                         <Form.Label htmlFor="time">Approximate Time:</Form.Label>
                             <Form.Control 
+                                required
                                 name="time"
                                 type="time" 
                                 value={this.state.time}
@@ -74,6 +93,7 @@ class InsertEntry extends React.Component {
                             />
                         <Form.Label htmlFor="location">Location:</Form.Label>
                             <Form.Control 
+                                required
                                 name="location"
                                 type="text" 
                                 value={this.state.location}
@@ -91,9 +111,21 @@ class InsertEntry extends React.Component {
                     </Form.Group>
                 </Form>
                 <br/>
+
+                <Modal show={this.state.show} onHide={(e) => this.handleClose(e)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Success!</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Your entry was successfully added to our database!</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={(e) => this.handleClose(e)}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </Container>
         )
     }
 }
 
-export default InsertEntry;
+export default withRouter(InsertEntry);

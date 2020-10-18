@@ -4,25 +4,32 @@ body {
 
 .container {
     max-width: 1000px;
-    background-color: lightblue;
+    background-color: #AAD3DF;
     margin: 0 auto;
 }
 
-h1 {
-    margin-left: 0.5em;
-    color: mediumblue;
-}
-
-h2 {
-    color: mediumblue;
-}
-
-h3 {
+h1, h2, h3 {
     color: mediumblue;
 }
 
 h5 {
     margin-left: 10px;
+}
+
+a:link {
+    color:mediumblue;
+}
+
+a:visited {
+    color: mediumblue;
+}
+
+a:hover {
+    color: mediumblue;
+}
+
+#home {
+    color: white;
 }
 
 .container2 {
