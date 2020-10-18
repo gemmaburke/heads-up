@@ -69,19 +69,16 @@ router.post('/', async (req, res) => {
 router.get('/search', async (req, res) => {
     // Build the SELECT statement
     let { date, location } = req.query;
-    let where = [];
-    if (date) {
-        where.push( `date_time LIKE '${date}%'` );
+    let sql = 'SELECT * FROM assaults WHERE ';
+    if (date && location) {
+        sql += `date_time LIKE '%${date}%' AND location LIKE '%${location}%'`;
+    } else if (date) {
+        sql += `date_time LIKE '%${date}%'`;
+    } else {
+        sql += `location LIKE '%${location}%'`;
     }
-    if (location) {
-        where.push( `location LIKE '%${location}%'` );
-    }
-    let sql = 'SELECT * FROM assaults';
-    if (where.length) {
-        sql += ' WHERE ' + where.join(' AND ');
-    }
-    sql += ' ORDER BY date_time';
-
+    sql += ' ORDER BY date_time;';
+    console.log(sql);
     // Now do it!
     try {
         let results = await db(sql);

@@ -19,23 +19,26 @@ class MapView extends React.Component {
           <Map ref={this.mapRef} center={[this.props.mapDisplay.latitude, this.props.mapDisplay.longitude]} zoom={this.props.mapDisplay.zoomLevel}>
             <TileLayer attribution={this.state.attribution} url={this.state.url}/>
             {
-              this.props.assaults.map((assault) => 
-                <Marker key={assault.id} position={[assault.lat, assault.lng]}>
-                  <Popup>
-                    <span>{assault.date}, {assault.time}</span><br/>
-                    <span>{assault.location}</span>
-                    <p>{assault.description}</p>
-                  </Popup>
-                </Marker>
-              )
+              this.props.assaults.length > 0
+              ?
+                this.props.assaults.map((assault) => 
+                  <Marker key={assault.id} position={[assault.lat, assault.lng]} fillColor="red">
+                    <Popup>
+                      <span>{assault.date}, {assault.time}</span><br/>
+                      <span>{assault.location}</span>
+                      <p>{assault.description}</p>
+                    </Popup>
+                  </Marker>
+                )
+              : <></>
             }
             {
               this.props.policeData.map((assault, ix) => 
                 <Marker key={ix} position={[assault.location.latitude, assault.location.longitude]}>
                   <Popup>
                     <span>{assault.month}</span><br/>
-                    <span>{assault.location.street.name}</span><br/>
-                    <span>{assault.outcome_status.category}</span>
+                    <span>{assault.location.street.name}</span>
+                    {/* <span>{assault.outcome_status.category}</span> */}
                   </Popup>
                 </Marker>
               )

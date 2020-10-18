@@ -14,12 +14,12 @@ import InsertEntry from './Components/InsertEntry';
 import HomeView from './Components/HomeView';
 import { Switch, Route, Link} from "react-router-dom";
 import { withRouter } from "react-router";
-// const opencage = require('opencage-api-client');
+const opencage = require('opencage-api-client');
 
 // register for your own API key at OpenCageData.com and update in .env file:
-// const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
+const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
 const POLICE_API_URL = 'https://data.police.uk/api/crimes-street/violent-crime?';
-// const POLICE_API_URL = 'https://data.police.uk/api/crimes-street/other-crime?';
+const POLICE_API_SEARCH = 'https://data.police.uk/api/crimes-at-location?';
 const ASSAULTS_URL = "http://localhost:5000/assaults";
 
 // initialises map to wide view of London
@@ -75,31 +75,40 @@ class App extends React.Component {
     }
   }
 
-  /*async getPoliceData(lat, lng) {
-    let url = `${POLICE_API_URL}lat=${lat}&lng=${lng}`;
+  async searchPoliceData(q) {
+    let date = q.date.slice(0, q.date.length-3);
+    if (date) {
+      let dateDecimal = date.replace('-', '.');
+      let dateNum = parseFloat(dateDecimal);
+      if (dateNum > 2020.08) {
+        this.setState({policeData: []});
+        return;
+      };
+    };
+    let lat = q.lat;
+    let lng = q.lng;
+    let url = '';
+    if (date && lat && lng) {
+      url = `${POLICE_API_SEARCH}date=${date}&lat=${lat}&lng=${lng}`;
+    } else if (lat && lng) {
+      url = `${POLICE_API_SEARCH}date=2020-08&lat=${lat}&lng=${lng}`;
+    } else {
+      url = `${POLICE_API_URL}poly=51.443095,-0.272856:51.619854,-0.128778:51.427574,-0.101305&date=${date}`;
+    };
     try {
       let response = await fetch(url);
       if (response.ok) {
         let data = await response.json();
-        this.setState({policeData: data});
-        console.log(this.state.policeData);
-      } else {
-        console.log(`ERROR: ${response.status} ${response.statusText}`);
-      }
-    } catch (err) {
-      console.log(`EXCEPTION: ${err.message}`);
-    }
-  }*/
-
-  async getPoliceData(lat, lng) {
-    // let url = `${POLICE_API_URL}lat=55.868157&lng=-4.2485`;
-    let url = `${POLICE_API_URL}lat=${lat}&lng=${lng}`;
-    try {
-      let response = await fetch(url);
-      if (response.ok) {
-        let data = await response.json();
-        this.setState({policeData: data});
-        console.log(this.state.policeData);
+        if (data.length > 50) {
+          let dataReduced = [];
+          for (let i=0; i < 50; i++) {
+            dataReduced.push(data[i]);
+            this.setState({policeData: dataReduced});
+          }
+        } else {
+          this.setState({policeData: data});
+        }
+        // console.log(this.state.policeData);
       } else {
         console.log(`ERROR: ${response.status} ${response.statusText}`);
       }
@@ -119,48 +128,61 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(json => {
-      this.setState({assaults:json});
+      this.setState({assaults: [...this.state.assaults, json]});
       console.log(this.state.assaults);
     })
     .catch((err) => console.log(err));
   }
 
-  /*setLocation(locationStr) {
+  getGeocode(query) {
+    let date = query.date;
+    let location = query.location;
     opencage
-      .geocode({ q: locationStr, key: OC_API_KEY})
+      .geocode({ q: location, key: OC_API_KEY})
       .then(data => {
         if (data.results.length > 0) {
             console.log("Found location: " + data.results[0].formatted);
             const lat = data.results[0].geometry.lat;
             const lng = data.results[0].geometry.lng;
-            this.getPoliceData(lat, lng);
-            this.setState({mapDefault: {latitude: lat, longitude: lng, zoomLevel: 10}});
+            this.searchPoliceData({date, lat, lng});
         } else alert("Location not found");
       })
       .catch(error => {
         console.log('Error:', error.message);
       });
-  }*/
+  }
 
   search(q) {
-    console.log(q);
-    /*opencage
-      .geocode({ q: locationStr, key: OC_API_KEY})
-      .then(data => {
-        if (data.results.length > 0) {
-            console.log("Found location: " + data.results[0].formatted);
-            const lat = data.results[0].geometry.lat;
-            const lng = data.results[0].geometry.lng;
-            this.setState({mapDefault: {latitude: lat, longitude: lng, zoomLevel: 10}});
-        } else alert("Location not found");
-      })
-      .catch(error => {
-        console.log('Error:', error.message);
-      });*/
+    // console.log(q);
+    let date = q.date;
+    let location = q.location;
+    let searchParams = '';
+    if (date && location) {
+      searchParams = `date=${date}&location=${location}`;
+      this.getGeocode(q);
+    } else if (date) {
+      searchParams = `date=${date}`;
+      this.searchPoliceData(q);
+    } else {
+      searchParams = `location=${location}`;
+      this.getGeocode(q);
+    };
+    fetch(`${ASSAULTS_URL}/search?${searchParams}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(res => res.json())
+    .then(json => {
+      this.setState({assaults: json});
+    })
+    .catch((err) => console.log(err));
   }
 
   resetMap() {
     this.setState({mapDefault: MAP_INIT});
+    this.componentDidMount();
   }
 
   render(){
