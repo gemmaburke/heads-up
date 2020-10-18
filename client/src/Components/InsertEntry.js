@@ -17,6 +17,8 @@ class InsertEntry extends React.Component {
             time: '',
             location: '',
             description: '',
+            lat: '',
+            lng: ''
         }
     }
 
@@ -27,23 +29,12 @@ class InsertEntry extends React.Component {
         });
     }
 
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     // below doesn't work because it completes handleSubmit before completing getGeocode (with updated state)
-    //     this.getGeocode();
-    //     console.log('Submitted:', this.state);
-    //     this.props.addAttack(this.state);
-    //     this.setState({date: '', time: '', location: '', description: '', lat: 0, lng: 0});
-    // }
-
-    handleSubmit = (event) => {
+    async handleSubmit(event) {
         event.preventDefault();
-        // below doesn't work because it completes handleSubmit before completing getGeocode (with updated state)
-        this.getGeocode();
-        console.log('Submitted:', this.state);
+        await this.getGeocode();
         this.props.addAttack(this.state);
-        this.setState({date: '', time: '', location: '', description: ''});
-        this.handleShow()
+        this.setState({date: '', time: '', location: '', description: '', lat: '', lng: ''});
+        this.handleShow();
     }
 
     handleShow = () => {
@@ -59,17 +50,15 @@ class InsertEntry extends React.Component {
         this.props.history.push('/');
     }
 
-    getGeocode() {
-        opencage
+    async getGeocode() {
+        await opencage
         .geocode({ q: this.state.location, key: OC_API_KEY})
         .then(data => {
         if (data.results.length > 0) {
             console.log("Found location: " + data.results[0].formatted);
-            const latlng = data.results[0].geometry;
-            // const lat = data.results[0].geometry.latitude;
-            // const lng = data.results[0].geometry.longitude;
-            // console.log(latlng);
-            return latlng;
+            const lat = data.results[0].geometry.lat;
+            const lng = data.results[0].geometry.lng;
+            this.setState({lat: lat, lng: lng});
         } else alert("Location not found");
         })
         .catch(error => {
