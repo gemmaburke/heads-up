@@ -1,9 +1,10 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
 class About extends React.Component {
     render() {
         return (
-            <div>
+            <Container fluid className="container2">
                 <h2>About Heads-Up</h2>
                 <p>The purpose of this app is to act as a simple service and support tool for the victims of sexual assault and members of communities where attacks are known to have taken place anywhere in the world.</p>
                 <p>The objective is that everybody can use it and it can help as a way so that victims can help other community members as a way to prevent more sexual attacks and to make it easier to catch sexual offenders.</p>
@@ -26,7 +27,7 @@ class About extends React.Component {
                 </ul>
                 <p><em>This is a student project that was created at <a href="http://codeop.tech">CodeOp</a>, a full stack development bootcamp in Barcelona.</em></p>
                 <br/>
-            </div>
+            </Container>
         )
     }
 }

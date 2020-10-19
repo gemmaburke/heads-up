@@ -32,7 +32,7 @@ class Search extends React.Component {
 
     render() {
         return(
-            <Container fluid className="container" style={{paddingLeft: "50px"}}>
+            <Container fluid className="container2">
                 <br/>
                 <h3>Search</h3>
                 <br/>

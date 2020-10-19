@@ -32,15 +32,16 @@ Database scheme
 ![Database](images/database.JPG)
 
 - Database of 'attacks' includes:
-  - date
-  - time
+  - date_time
   - location
   - description
+  - lat
+  - lng
+
 - Methods:
   - post method to add attack
   - get method to get all attacks
-  - get method to get all attacks by location
-  - get method to get all attacks by date(?)
+  - get method to get attacks by location, date or both
 
 ## Design & user-flow
 Landing page mock-up

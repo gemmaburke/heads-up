@@ -15,7 +15,7 @@ class HomeView extends React.Component {
     render() {
         return (
             <div>
-                <Container fluid className="container2">
+                <Container fluid className="container3">
                     <Nav className="nav">
                         <Nav.Item as="li">
                             <NavLink to="/search" activeClassName="selected">Search</NavLink>
@@ -29,7 +29,7 @@ class HomeView extends React.Component {
                     </Nav>
                     <MapView assaults={this.props.assaults} policeData={this.props.policeData} mapDisplay={this.props.mapDisplay}/>
                 </Container>
-                <Container fluid className="container3">
+                <Container fluid className="container4">
                     <Nav>
                         <Row>
                             <Col>
@@ -46,7 +46,7 @@ class HomeView extends React.Component {
                             </Col>
                             <Col>
                                 <Nav.Item as="li">
-                                    <Button className="rounded-circle" variant="light"><NavLink to="/about" activeClassName="selected"><span className="symbol1">&#9432;</span></NavLink></Button>
+                                    <Button className="rounded-circle" variant="light"><NavLink to="/about" activeClassName="selected"><span className="symbol">&#9432;</span></NavLink></Button>
                                     <h5>About</h5>
                                 </Nav.Item>
                             </Col>

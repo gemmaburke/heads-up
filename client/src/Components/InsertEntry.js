@@ -68,7 +68,7 @@ class InsertEntry extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container fluid className="container2">
                 <h2>Add New Entry</h2>
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                     <Form.Group>
