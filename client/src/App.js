@@ -47,7 +47,6 @@ class App extends React.Component {
         // upon sucess, update assaults
         this.initPoliceData();
         this.setState({ assaults: json });
-        // console.log(this.state.assaults);
       })
       .catch(error => {
         // upon failure, show error message
@@ -67,6 +66,7 @@ class App extends React.Component {
           reducedData.push(data[i])
         };
         this.setState({policeData: reducedData});
+        // console.log(this.state.policeData);
       } else {
         console.log(`ERROR: ${response.status} ${response.statusText}`);
       }
