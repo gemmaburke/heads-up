@@ -187,15 +187,17 @@ class App extends React.Component {
 
   render(){
     return (
-      <Container fluid className="container">
-        <h1>Heads-Up</h1>
-        <Navbar>
-          <Nav>
-            <Nav.Item>
-              <Link to="/" exact id="home"><span className="home">Home</span></Link>
+      <Container fluid className="container1">
+        <Container fluid className="container2">
+          <h1>Heads-Up</h1>
+          <Navbar>
+            <Nav>
+              <Nav.Item>
+                <Link to="/" exact id="home"><h2>&#127968;</h2></Link>
             </Nav.Item>
-          </Nav>
-        </Navbar>
+            </Nav>
+          </Navbar>
+        </Container>
 
         <Switch>
           <Route path='/' exact>

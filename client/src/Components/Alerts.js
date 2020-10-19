@@ -48,7 +48,7 @@ class Alerts extends React.Component {
 
     render() {
         return (
-            <Container fluid>
+            <Container fluid className="container2">
                 <h2>Register for Alerts</h2>
                 <Form onSubmit={(e) => this.handleSubmit(e)}>
                     <Form.Group>
