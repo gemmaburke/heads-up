@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 import { withRouter } from "react-router";
+const opencage = require('opencage-api-client');
+
+const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
 
 class Alerts extends React.Component {
     constructor(props) {
@@ -12,6 +15,8 @@ class Alerts extends React.Component {
             email: '',
             location: '',
             phone: '',
+            lat: 0,
+            lng: 0,
             show: false
         }
     }
@@ -21,16 +26,31 @@ class Alerts extends React.Component {
         this.setState({
             [name]: value
         });
-        console.log(this.state)
     }
 
-    handleSubmit = (event) => {
+    async handleSubmit(event) {
         event.preventDefault();
-        const {target: {name, value}} = event;
-        this.setState({
-            [name]: value
+        await this.getGeocode();
+        let newUser = {email: this.state.email, lat: this.state.lat, lng: this.state.lng};
+        this.props.addUser(newUser);
+        this.setState({email: '', location: '', phone: '', lat: '', lng: ''});
+        this.handleShow();
+    }
+
+    async getGeocode() {
+        await opencage
+        .geocode({ q: this.state.location, key: OC_API_KEY})
+        .then(data => {
+        if (data.results.length > 0) {
+            console.log("Found location: " + data.results[0].formatted);
+            const lat = data.results[0].geometry.lat;
+            const lng = data.results[0].geometry.lng;
+            this.setState({lat: lat, lng: lng});
+        } else alert("Location not found");
+        })
+        .catch(error => {
+        console.log('Error:', error.message);
         });
-        this.handleShow()
     }
     
     handleClose = (e) => {

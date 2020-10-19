@@ -54,6 +54,14 @@ class App extends React.Component {
         // upon failure, show error message
         console.log("ERROR in componentDidMount():", error);
       });
+    fetch(USERS_URL)
+      .then(res => res.json())
+      .then(json => {
+        this.setState({ users: json });
+      })
+      .catch(error => {
+        console.log("ERROR in componentDidMount():", error);
+      });
   }
 
   async initPoliceData() {
@@ -137,7 +145,7 @@ class App extends React.Component {
   }
 
   addUser(newUser) {
-    console.log(newUser);
+    console.log('adding newUser:', newUser);
     fetch(USERS_URL, {
       method: "POST",
       headers: {
@@ -148,7 +156,7 @@ class App extends React.Component {
     .then(res => res.json())
     .then(json => {
       this.setState({users: [...this.state.users, json]});
-      console.log(this.state.users);
+      console.log('All registered users:', this.state.users);
     })
     .catch((err) => console.log(err));
   }
@@ -240,7 +248,7 @@ class App extends React.Component {
             <About />
           </Route>
           <Route path='/alerts'>
-            <Alerts />
+            <Alerts addUser={(newUser) => this.addUser(newUser)}/>
           </Route>
         </Switch>
 
