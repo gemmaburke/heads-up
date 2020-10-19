@@ -3,7 +3,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
+import Emailjs from './Emailjs';
 import { withRouter } from "react-router";
+import { Switch, Route, Link} from "react-router-dom";
 
 class Alerts extends React.Component {
     constructor(props) {
@@ -50,7 +52,7 @@ class Alerts extends React.Component {
         return (
             <Container fluid className="container2">
                 <h2>Register for Alerts</h2>
-                <Form onSubmit={(e) => this.handleSubmit(e)}>
+                {/*<Form onSubmit={(e) => this.handleSubmit(e)}>
                     <Form.Group>
                         <Form.Label htmlFor="email">Insert Your Email-Address</Form.Label>
                             <Form.Control
@@ -91,7 +93,13 @@ class Alerts extends React.Component {
                             Close
                         </Button>
                     </Modal.Footer>
-                </Modal>
+        </Modal>*/}
+
+                <Switch>
+                    <Route path='/alerts'>
+                        <Emailjs />
+                    </Route>
+                </Switch>
             </Container>
         )
     }
