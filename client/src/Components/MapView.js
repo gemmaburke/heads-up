@@ -41,7 +41,11 @@ class MapView extends React.Component {
             }
             {
               this.props.policeData.map((assault, ix) => 
-                <Marker key={ix} position={[assault.location.latitude, assault.location.longitude]}>
+                <Marker 
+                  icon={<img src={pinBlue} style={{width: '20px'}} alt="marker icon"/>}
+                  key={ix}
+                  position={[assault.location.latitude, assault.location.longitude]}
+                >
                   <Popup>
                     <span>{assault.month}</span><br/>
                     <span>{assault.location.street.name}</span>
