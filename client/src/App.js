@@ -13,7 +13,7 @@ import Alerts from './Components/Alerts';
 import Support from './Components/Support';
 import InsertEntry from './Components/InsertEntry';
 import HomeView from './Components/HomeView';
-import { Switch, Route, NavLink, Link} from "react-router-dom";
+import { Switch, Route, NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 import House from './House.jpg';
 import Banner from './headsuplogo.jpg';
@@ -253,7 +253,7 @@ class App extends React.Component {
               <About />
             </Route>
             <Route path='/alerts'>
-              <Alerts />
+              <Alerts addUser={(n) => this.addUser(n)}/>
             </Route>
           </Switch>
 

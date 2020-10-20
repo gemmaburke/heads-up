@@ -3,9 +3,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
-import Emailjs from './Emailjs';
+//import Emailjs from './Emailjs';
+import emailjs from 'emailjs-com';
 import { withRouter } from "react-router";
-import { Switch, Route, Link} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 const opencage = require('opencage-api-client');
 
 const OC_API_KEY = process.env.REACT_APP_OC_API_KEY; 
@@ -14,9 +15,10 @@ class Alerts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
+            user_name: '',
+            user_email: '',
             location: '',
-            phone: '',
+            contact_number: '',
             lat: 0,
             lng: 0,
             show: false
@@ -31,11 +33,11 @@ class Alerts extends React.Component {
     }
 
     async handleSubmit(event) {
-        event.preventDefault();
+        //event.preventDefault();
         await this.getGeocode();
-        let newUser = {email: this.state.email, lat: this.state.lat, lng: this.state.lng};
+        let newUser = {user_name: this.state.user_name, user_email: this.state.user_email, lat: this.state.lat, lng: this.state.lng};
         this.props.addUser(newUser);
-        this.setState({email: '', location: '', phone: '', lat: '', lng: ''});
+        this.setState({user_name: '', user_email: '', location: '', contact_number: '', lat: '', lng: ''});
         this.handleShow();
     }
 
@@ -66,31 +68,53 @@ class Alerts extends React.Component {
         this.setState({
            show: true
         })
-    }    
+    }  
+    
+    sendEmail(e) {
+        e.preventDefault();
+
+        emailjs.sendForm('service_2nxqn7h', 'template_1abvtkq', e.target, 'user_qwRxC6MyQfWVRgEQp98Nm')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+        e.target.reset();
+        this.handleSubmit();
+
+    };
 
     render() {
         return (
             <Container fluid className="container2">
                 <h2>Register for Alerts</h2>
-                {/*<Form onSubmit={(e) => this.handleSubmit(e)}>
+                <Form className="contact-form" onSubmit={(e) => this.sendEmail(e)}>
                     <Form.Group>
-                        <Form.Label htmlFor="email">Insert Your Email-Address</Form.Label>
+                        <Form.Label htmlFor="user_name">Name</Form.Label>
                             <Form.Control
                                 required
-                                name="email"
-                                type="email" 
-                                value={this.state.email}
-                                onChange={(e) => this.handleChange(e)}
-                            />
-                            <Form.Label htmlFor="phone">Insert Your Phone Number</Form.Label>
-                            <Form.Control
-                                required
-                                name="phone"
+                                name="user_name"
                                 type="text" 
-                                value={this.state.phone}
+                                value={this.state.user_name}
                                 onChange={(e) => this.handleChange(e)}
                             />
-                        <Form.Label htmlFor="address">Insert Address</Form.Label>
+                            <Form.Label htmlFor="user_email">Email-Address</Form.Label>
+                            <Form.Control
+                                required
+                                name="user_email"
+                                type="email" 
+                                value={this.state.user_email}
+                                onChange={(e) => this.handleChange(e)}
+                            />
+                        <Form.Label htmlFor="contact_number">Phone Number</Form.Label>
+                            <Form.Control
+                                required
+                                name="contact_number"
+                                type="text" 
+                                value={this.state.contact_number}
+                                onChange={(e) => this.handleChange(e)}
+                        />
+                        <Form.Label htmlFor="address">Address</Form.Label>
                             <Form.Control 
                                 required
                                 name="location"
@@ -113,13 +137,13 @@ class Alerts extends React.Component {
                             Close
                         </Button>
                     </Modal.Footer>
-        </Modal>*/}
+                </Modal>
 
-                <Switch>
+                {/*<Switch>
                     <Route path='/alerts'>
                         <Emailjs />
                     </Route>
-                </Switch>
+                </Switch>*/}
             </Container>
         )
     }
