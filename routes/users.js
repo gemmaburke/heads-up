@@ -48,18 +48,18 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    let { email, lat, lng } = req.body;
+    let { user_name, user_email, lat, lng } = req.body;
 
-    if (!email || !lat || !lng) {
+    if (!user_name || !user_email || !lat || !lng) {
         res.status(400).send({ error: 'Required data incomplete' });
         return;
     }
 
     let sql = `
         INSERT INTO users
-        (email, lat, lng)
+        (user_name, user_email, lat, lng)
         VALUES
-        ('${email}', ${lat}, ${lng});
+        ('${user_name}', '${user_email}', ${lat}, ${lng});
         SELECT LAST_INSERT_ID();
     `;
 

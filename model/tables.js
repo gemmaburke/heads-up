@@ -15,7 +15,8 @@ CREATE TABLE assaults (
 
 CREATE TABLE users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR(100) NOT NULL,
+    user_name VARCHAR(100) NOT NULL,
+    user_email VARCHAR(100) NOT NULL,
     lat DECIMAL(11,8) NOT NULL,
     lng DECIMAL(11,8) NOT NULL
 );
@@ -38,10 +39,10 @@ VALUES
 ;
 
 INSERT INTO users
-    (email, lat, lng)
+    (user_name, user_email, lat, lng)
 VALUES
-    ('user1@acme.com', 2.345, 2.100),
-    ('user2@acme.com', 4.345, 10.100),
-    ('user3@acme.com', 2.345, 2.170),
-    ('user4@acme.com', 50.345, 2.100);
+    ('Mary', 'user1@acme.com', 2.345, 2.100),
+    ('Joan', 'user2@acme.com', 4.345, 10.100),
+    ('John', 'user3@acme.com', 2.345, 2.170),
+    ('Lucy', 'user4@acme.com', 50.345, 2.100);
 `;
