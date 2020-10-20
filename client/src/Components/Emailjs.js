@@ -1,5 +1,5 @@
 import React from 'react';
-import emailjs from 'emailjs';
+import emailjs from 'emailjs-com';
 
 class Emailjs extends React.Component{
 
@@ -24,8 +24,8 @@ class Emailjs extends React.Component{
                     <input type="text" name="user_name" />
                     <label>Email</label>
                     <input type="email" name="user_email" />
-                    <label>Message</label>
-                    <textarea name="message" />
+                    {/*<label>Message</label>
+                    <textarea name="message" />*/}
                     <input type="submit" value="Send" />
                 </form>
             </div>

@@ -29,36 +29,7 @@ class HomeView extends React.Component {
                     </Nav>
                     <MapView assaults={this.props.assaults} policeData={this.props.policeData} mapDisplay={this.props.mapDisplay}/>
                 </Container>
-                <Container fluid className="container4">
-                    <Nav>
-                        <Row>
-                            <Col>
-                                <Nav.Item as="li">
-                                    <Button className="rounded-circle" variant="light"><NavLink to="/support" activeClassName="selected"><span className="symbol1">&hearts;</span></NavLink></Button>
-                                    <h5>Support</h5>
-                                </Nav.Item>
-                            </Col>
-                            <Col>
-                                <Nav.Item as="li">                    
-                                    <Button className="rounded-circle" variant="light"><a href="https://headup.freeforums.net/" target="_blank" rel="noopener noreferrer"><span className="symbol">&#128490;</span></a></Button>
-                                    <h5>Forum</h5>
-                                </Nav.Item>
-                            </Col>
-                            <Col>
-                                <Nav.Item as="li">
-                                    <Button className="rounded-circle" variant="light"><NavLink to="/about" activeClassName="selected"><span className="symbol">&#9432;</span></NavLink></Button>
-                                    <h5>About</h5>
-                                </Nav.Item>
-                            </Col>
-                            <Col>
-                                <Nav.Item as="li">
-                                    <Button className="rounded-circle" variant="light"><NavLink to="/alerts" activeClassName="selected"><span className="symbol">&#33;</span></NavLink></Button>
-                                    <h5>Alerts</h5>
-                                </Nav.Item>
-                            </Col>
-                        </Row>
-                    </Nav>
-                </Container>  
+                
             <br/>
         </div>
         )

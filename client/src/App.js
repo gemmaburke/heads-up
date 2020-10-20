@@ -1,19 +1,22 @@
 import React from 'react';
 import './App.css';
-import Navbar from 'react-bootstrap/Navbar';
+//import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-// import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 import Search from './Components/Search';
 import About from './Components/About';
 import Alerts from './Components/Alerts';
 import Support from './Components/Support';
 import InsertEntry from './Components/InsertEntry';
 import HomeView from './Components/HomeView';
-import { Switch, Route, Link} from "react-router-dom";
+import { Switch, Route, NavLink, Link} from "react-router-dom";
 import { withRouter } from "react-router";
+import House from './House.jpg';
+import Banner from './headsuplogo.jpg';
 const opencage = require('opencage-api-client');
 
 // register for your own API key at OpenCageData.com and update in .env file:
@@ -214,45 +217,84 @@ class App extends React.Component {
 
   render(){
     return (
-      <Container fluid className="container1">
-        <Container fluid className="container2">
-          <h1>Heads-Up</h1>
-          <Navbar>
+      <div>
+        <Container fluid className="container1">
+          <Container fluid className="container2">
+            <Row>
+              <Col lg="2">
+                <img src={Banner} alt="Logo" />
+              </Col>
+              <Col>
+                <h1>Heads-Up</h1>
+                <h2 id="white">Helping London stay safe from sexual assault</h2>
+              </Col>
+            </Row>
+          </Container>
+        
+          <Switch>
+            <Route path='/' exact>
+              <HomeView
+                assaults={this.state.assaults}
+                policeData={this.state.policeData}
+                mapDisplay={this.state.mapDefault}
+                resetMap={e => this.resetMap()}
+              />
+            </Route>
+            <Route path='/search'>
+              <Search assaults={this.state.assaults} search={(q) => this.search(q)}/>
+            </Route>
+            <Route path='/addentry'>
+              <InsertEntry addAttack={(newAttack) => this.addAttack(newAttack)}/>
+            </Route>
+            <Route path='/support'>
+              <Support />
+            </Route>
+            <Route path='/about'>
+              <About />
+            </Route>
+            <Route path='/alerts'>
+              <Alerts />
+            </Route>
+          </Switch>
+
+          <Container fluid className="container4">
             <Nav>
-              <Nav.Item>
-                <Link to="/" exact id="home"><h2>&#127968;</h2></Link>
-            </Nav.Item>
+              <Row>
+                <Col>
+                <Nav.Item as="li">
+                  <Button className="rounded-circle" variant="light"><NavLink to="/" exact activeClassName="selected"><Image src={House} alt="Home" className="image" /></NavLink></Button>
+                  <h5>Home</h5>
+                </Nav.Item>
+                </Col>
+                <Col>
+                  <Nav.Item as="li">
+                    <Button className="rounded-circle" variant="light"><NavLink to="/support" activeClassName="selected"><span className="symbol1">&hearts;</span></NavLink></Button>
+                    <h5>Support</h5>
+                  </Nav.Item>
+                </Col>
+                <Col>
+                  <Nav.Item as="li">                    
+                    <Button className="rounded-circle" variant="light"><a href="https://headup.freeforums.net/" target="_blank" rel="noopener noreferrer"><span className="symbol">&#128490;</span></a></Button>
+                    <h5>Forum</h5>
+                  </Nav.Item>
+                </Col>
+                <Col>
+                  <Nav.Item as="li">
+                    <Button className="rounded-circle" variant="light"><NavLink to="/about" activeClassName="selected"><span className="symbol">&#9432;</span></NavLink></Button>
+                    <h5>About</h5>
+                  </Nav.Item>
+                </Col>
+                <Col>
+                  <Nav.Item as="li">
+                    <Button className="rounded-circle" variant="light"><NavLink to="/alerts" activeClassName="selected"><span className="symbol">&#33;</span></NavLink></Button>
+                    <h5>Alerts</h5>
+                  </Nav.Item>
+                </Col>
+              </Row>
             </Nav>
-          </Navbar>
+          </Container>  
         </Container>
-
-        <Switch>
-          <Route path='/' exact>
-            <HomeView
-              assaults={this.state.assaults}
-              policeData={this.state.policeData}
-              mapDisplay={this.state.mapDefault}
-              resetMap={e => this.resetMap()}
-            />
-          </Route>
-          <Route path='/search'>
-            <Search assaults={this.state.assaults} search={(q) => this.search(q)}/>
-          </Route>
-          <Route path='/addentry'>
-            <InsertEntry addAttack={(newAttack) => this.addAttack(newAttack)}/>
-          </Route>
-          <Route path='/support'>
-            <Support />
-          </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/alerts'>
-            <Alerts addUser={(newUser) => this.addUser(newUser)}/>
-          </Route>
-        </Switch>
-
-      </Container>
+      </div>
     );
   }
 }
