@@ -24,6 +24,7 @@ const OC_API_KEY = process.env.REACT_APP_OC_API_KEY;
 const POLICE_API_URL = 'https://data.police.uk/api/crimes-street/violent-crime?';
 const POLICE_API_SEARCH = 'https://data.police.uk/api/crimes-at-location?';
 const ASSAULTS_URL = "http://localhost:5000/assaults";
+const USERS_URL = "http://localhost:5000/users";
 
 // initialises map to wide view of London
 const MAP_INIT = {
@@ -39,6 +40,7 @@ class App extends React.Component {
       assaults: [],
       markers: [],
       policeData: [],
+      users: [],
       mapDefault: MAP_INIT
     }
   }
@@ -50,10 +52,17 @@ class App extends React.Component {
         // upon sucess, update assaults
         this.initPoliceData();
         this.setState({ assaults: json });
-        // console.log(this.state.assaults);
       })
       .catch(error => {
         // upon failure, show error message
+        console.log("ERROR in componentDidMount():", error);
+      });
+    fetch(USERS_URL)
+      .then(res => res.json())
+      .then(json => {
+        this.setState({ users: json });
+      })
+      .catch(error => {
         console.log("ERROR in componentDidMount():", error);
       });
   }
@@ -70,6 +79,7 @@ class App extends React.Component {
           reducedData.push(data[i])
         };
         this.setState({policeData: reducedData});
+        // console.log(this.state.policeData);
       } else {
         console.log(`ERROR: ${response.status} ${response.statusText}`);
       }
@@ -133,6 +143,23 @@ class App extends React.Component {
     .then(json => {
       this.setState({assaults: [...this.state.assaults, json]});
       console.log(this.state.assaults);
+    })
+    .catch((err) => console.log(err));
+  }
+
+  addUser(newUser) {
+    console.log('adding newUser:', newUser);
+    fetch(USERS_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
+    .then(res => res.json())
+    .then(json => {
+      this.setState({users: [...this.state.users, json]});
+      console.log('All registered users:', this.state.users);
     })
     .catch((err) => console.log(err));
   }
