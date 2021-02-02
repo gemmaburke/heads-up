@@ -1,0 +1,20 @@
+.container3 {
+    max-width: 1000px;
+}
+
+.nav {
+    background-color: ffffff;
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.resetLink {
+    cursor: pointer;
+    color: mediumblue;
+}
+
+.resetLink:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,95 @@
+body {
+    font-size: 20px;
+    background-color: lightblue;
+}
+
+.container1 {
+    width: 1600px;
+    background-color: lightblue;
+    margin: 0 auto;
+}
+
+.container2 {
+    padding-top: 10px;
+    max-width: 850px;
+}
+
+.container3 {
+    background-color: white;
+    width: 600px;
+    margin: 0 auto;
+    color: mediumblue;
+}
+
+.container3 li {
+    margin-left: 1em;
+}
+
+.container4 {
+    display: grid;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    color: mediumblue;
+}
+
+.container4 Button {
+    margin-left: 1em;
+    width: 6.5em;
+    height: 6.5em;
+}
+
+h1, h2, h3 {
+    color: mediumblue;
+}
+
+ h1 {
+    margin: 10px;
+    padding-top: 80px;
+}
+
+h2 {
+    margin-left: 10px;
+}
+
+h5 {
+    margin-left: 10px;
+}
+
+#white {
+    padding-top: 10px;
+    color: white;
+}
+
+a:link {
+    color:mediumblue;
+}
+
+a:visited {
+    color: mediumblue;
+}
+
+a:hover {
+    color: mediumblue;
+}
+
+
+.symbol {
+    font-weight: bold;
+    font-size: 50px;
+    color: mediumblue;
+}
+
+.symbol1 {
+    font-weight: bold;
+    font-size: 60px;
+    color: mediumblue;
+}
+
+.image {
+    width: 60px;
+}
+
+.image:hover {
+    text-decoration: underline;
+}
